@@ -18,14 +18,6 @@ claude plugin marketplace add shaan-ad/pm-os
 claude plugin install pm-os
 ```
 
-### Update
-
-```bash
-claude plugin update pm-os
-```
-
-Run this anytime to get the latest skills and improvements.
-
 ### Set Up Your Product
 
 ```
@@ -44,6 +36,14 @@ PM-OS asks about your company (drop a URL and it researches everything), your pr
 ```
 
 Or just describe what you need in plain language. PM-OS routes to the right skill automatically.
+
+## Update
+
+```bash
+claude plugin update pm-os
+```
+
+Run this anytime to get the latest skills and improvements.
 
 ## What's Inside
 
