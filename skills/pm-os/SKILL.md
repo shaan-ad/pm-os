@@ -115,8 +115,9 @@ When the user makes a request, determine which skill best matches:
    - "I got a bunch of customer feedback" -> Feedback Synthesis
    - "Let's plan next quarter" -> Quarterly Plan
    - "What should we prioritize?" -> Prioritize
-3. **Ambiguous**: If unclear, ask one clarifying question. Do not guess.
-4. **Multiple skills**: If the request spans multiple skills, suggest a sequence.
+3. **Multi-product**: If the user manages multiple products (check `knowledge/pm-context.md` for a Products section with more than one entry), and the request could apply to any of them, ask which product before proceeding. Default to the primary product if the user doesn't specify.
+4. **Ambiguous**: If unclear, ask one clarifying question. Do not guess.
+5. **Multiple skills**: If the request spans multiple skills, suggest a sequence.
 
 ## Knowledge System
 

@@ -6,12 +6,25 @@
 - **Industry:** 
 - **Description:** 
 
-## Product
+## Products
+
+**Primary product** (default context for all skills):
+
+### Product 1
 - **Name:** 
 - **Mission:** 
 - **Stage:** 
 - **Tech Stack:** 
 - **Key Metrics:** 
+
+<!-- Add more products as needed:
+### Product 2
+- **Name:** 
+- **Mission:** 
+- **Stage:** 
+- **Tech Stack:** 
+- **Key Metrics:** 
+-->
 
 ## Team
 - **Size:** 

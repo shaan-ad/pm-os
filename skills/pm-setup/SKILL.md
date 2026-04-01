@@ -28,15 +28,22 @@ If they provide a URL:
 
 If they skip: Ask them to describe the company in 1-2 sentences.
 
-### Step 2: Product Details
+### Step 2: Products / Initiatives
 
-Ask these questions (pre-fill from website if available):
+PMs often work across multiple products or initiatives. Ask:
 
-1. "What's the product name?"
-2. "What's the product's mission or purpose in one sentence?"
-3. "What stage is the product in?" (Offer: Pre-launch, Early (0-1), Growth, Mature, Turnaround)
-4. "What's the tech stack?" (Frontend, backend, infra. Skip if non-technical product.)
-5. "What are your 3-5 key metrics?" (Suggest common ones based on product stage: activation rate, retention, revenue, NPS, etc.)
+> "How many products or initiatives do you manage? List them all. For example: 'Main product, Mobile app, Internal tools' or just one product name."
+
+For **each** product/initiative, ask:
+1. "What's the name?"
+2. "What's its mission or purpose in one sentence?"
+3. "What stage is it in?" (Pre-launch, Early (0-1), Growth, Mature, Turnaround)
+4. "What's the tech stack?" (Skip if non-technical)
+5. "What are the 3-5 key metrics?"
+
+Store each product in its own section within `pm-context.md` under a `## Products` heading. The first product listed becomes the "primary" product that skills default to when context is ambiguous.
+
+If the user has multiple products, also ask: "Which product do you spend the most time on? I'll use that as the default context when skills need product-specific info, but you can always specify a different one."
 
 ### Step 3: Team
 
