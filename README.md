@@ -29,10 +29,10 @@ PM-OS asks about your company (drop a URL and it researches everything), your pr
 ### Start Using It
 
 ```
-/prd notification-system        # Write a PRD
-/slides quarterly-review        # Build an HTML slide deck
-/brief                          # Morning briefing
-/launch checkout-redesign       # Launch checklist
+/write-prd notification-system        # Write a PRD
+/create-slide-deck quarterly-review   # Build an HTML slide deck
+/pm-briefing                          # Morning briefing
+/launch-plan checkout-redesign        # Launch checklist
 ```
 
 Or just describe what you need in plain language. PM-OS routes to the right skill automatically.
@@ -60,10 +60,10 @@ Or just describe what you need in plain language. PM-OS routes to the right skil
 | Command | What It Does |
 |---------|-------------|
 | `/pm-setup` | Interactive onboarding wizard |
-| `/prd <feature>` | Generate a PRD |
-| `/slides <topic>` | Build an HTML slide deck |
-| `/launch <feature>` | Create a launch checklist |
-| `/brief` | Morning briefing |
+| `/write-prd <feature>` | Generate a PRD |
+| `/create-slide-deck <topic>` | Build an HTML slide deck |
+| `/launch-plan <feature>` | Create a launch checklist |
+| `/pm-briefing` | Morning briefing |
 
 Every other skill activates automatically based on what you ask. Say "research Notion as a competitor" and competitive-intel fires. Say "prioritize these features" and the RICE scorer kicks in.
 
@@ -151,11 +151,11 @@ If you run PM-OS inside a code repository, skills like `tech-feasibility` and `w
 
 ### Brand-Matched Slide Decks
 
-`/slides quarterly-review` builds a full HTML presentation with your company's colors, keyboard navigation, and print-ready layouts. It pulls data from your knowledge directory: metrics for product reviews, battlecards for competitive overviews, OKRs for strategy presentations. No PowerPoint needed.
+`/create-slide-deck quarterly-review` builds a full HTML presentation with your company's colors, keyboard navigation, and print-ready layouts. It pulls data from your knowledge directory: metrics for product reviews, battlecards for competitive overviews, OKRs for strategy presentations. No PowerPoint needed.
 
 ### PRD-to-Launch Pipeline
 
-Write a PRD with `/prd`, refine it with `refine-spec`, decompose it with `prioritize`, plan the sprint with `sprint-scope`, then generate the launch checklist with `/launch`. Each skill reads what the previous one wrote.
+Write a PRD with `/write-prd`, refine it with `/refine-spec`, decompose it with `/prioritize`, plan the sprint with `/sprint-scope`, then generate the launch checklist with `/launch-plan`. Each skill reads what the previous one wrote.
 
 ## Requirements
 

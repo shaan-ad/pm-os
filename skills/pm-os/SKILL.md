@@ -94,10 +94,10 @@ When the user asks what PM-OS can do, or seems unsure which skill to use, presen
 These slash commands map to the most common workflows:
 
 - `/pm-setup` : Run the onboarding wizard
-- `/prd` : Jump straight to PRD writing
-- `/slides` : Create an HTML slide deck
-- `/launch` : Start a launch plan
-- `/brief` : Get your PM briefing
+- `/write-prd` : Jump straight to PRD writing
+- `/create-slide-deck` : Create an HTML slide deck
+- `/launch-plan` : Start a launch plan
+- `/pm-briefing` : Get your PM briefing
 
 ## Routing Logic
 
