@@ -134,17 +134,85 @@ knowledge/decks/
 
 **knowledge/competitors/README.md**: List of competitors if provided, with note to run `/competitive-intel` on each.
 
-## Summary and Next Steps
+## After Creating Files
 
-Present a brief, punchy summary:
+Use AskUserQuestion: "Your knowledge base is set up. Want to keep going or jump in?"
 
-> **PM-OS is set up.** Created {N} directories and {N} files.
+Options:
+- **"Keep going, let's build a richer knowledge base"**: Proceed to the Deep Setup flow below.
+- **"I'm good, show me what I can do"**: Skip to the Skill Directory below.
+
+### Deep Setup (optional, if user wants to keep going)
+
+This is a conversational flow to flesh out the knowledge base. Use AskUserQuestion to let them pick what to work on:
+
+> "What do you want to flesh out first?"
+
+Options:
+- **"Research my competitors"**: Run `/competitive-intel` for each competitor they listed. Ask for URLs if not provided earlier.
+- **"Draft a product strategy"**: Run `/write-strategy` to create `knowledge/strategy.md`.
+- **"Build user personas"**: Run `/persona-builder` to create personas in `knowledge/personas/`.
+- **"Write OKRs"**: Run `/okr-writer` if they skipped earlier.
+
+After each, ask again: "Want to keep building, or ready to get started?"
+
+Options:
+- **"Keep building"**: Show the remaining options from the list above (minus what they already did).
+- **"I'm ready, show me everything"**: Proceed to the Skill Directory.
+
+### Skill Directory
+
+Present the full list of available skills:
+
+> **You're all set. Here's everything PM-OS can do:**
 >
-> **Try these first:**
-> - `/write-prd` to write your first spec
-> - `/competitive-intel` to research {competitor name}
-> - `/pm-briefing` for your daily briefing
-> - `/pm-dashboard` for a status overview
+> **Core**
+> - `/pm-setup` : This wizard (you just ran it)
+> - `/pm-dashboard` : Single-page status overview of your product
+>
+> **Discovery**
+> - `/feedback-synthesis` : Analyze customer feedback, find patterns
+> - `/competitive-intel` : Research a competitor from their URL
+> - `/opportunity-assessment` : Validate ideas with market sizing and feasibility
+>
+> **Strategy**
+> - `/write-strategy` : Draft a product strategy document
+> - `/okr-writer` : Create or update OKRs
+> - `/quarterly-plan` : Build a full quarter plan
+>
+> **User Research**
+> - `/persona-builder` : Create research-backed user personas
+> - `/interview-guide` : Generate user interview scripts
+> - `/journey-map` : Map user journeys with pain points
+>
+> **Define**
+> - `/write-prd` : Generate a PRD from a feature brief
+> - `/refine-spec` : Review and improve an existing spec
+> - `/tech-feasibility` : Assess technical complexity from the codebase
+>
+> **Plan**
+> - `/prioritize` : Score features with RICE or ICE
+> - `/roadmap-builder` : Build a quarterly roadmap
+> - `/sprint-scope` : Plan what fits in the next sprint
+>
+> **Deliver**
+> - `/launch-plan` : Generate a launch checklist
+> - `/retro-facilitator` : Run a retro or post-mortem
+>
+> **Communicate**
+> - `/status-update` : Generate stakeholder updates for different audiences
+> - `/decision-record` : Log a decision with context and rationale
+> - `/meeting-prep` : Prepare agendas and talking points
+> - `/pm-briefing` : Morning briefing with prioritized action items
+>
+> **Present**
+> - `/create-slide-deck` : Build HTML slide decks with your brand colors
+>
+> **Measure**
+> - `/metrics-check` : Review product metrics and trends
+> - `/experiment-review` : Analyze A/B test results
+>
+> Just describe what you need in plain language and PM-OS will route to the right skill.
 
 Then recommend Power-Up plugins based on their tools:
 - Linear users: "Install the Linear plugin for live sprint data"
