@@ -162,6 +162,14 @@ Write a PRD with `/prd`, refine it with `refine-spec`, decompose it with `priori
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (CLI, desktop, or IDE extension)
 - Claude Pro, Team, or Enterprise plan
 
+## Security
+
+Every skill in PM-OS is a plain markdown file you can read and audit. No compiled code, no obfuscated logic.
+
+The `main` branch is protected: all changes require a pull request with an approved review. No direct pushes, no force pushes, no exceptions. This applies to the maintainer too.
+
+Before installing any Claude Code plugin, you should review what it does. PM-OS skills can read files and run commands through Claude Code's normal permission system, which always asks before executing.
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add skills, improve existing ones, or suggest new workflows.
