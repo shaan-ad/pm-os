@@ -160,6 +160,113 @@ Options:
 - **"Keep building"**: Show the remaining options from the list above (minus what they already did).
 - **"I'm ready, show me everything"**: Proceed to the Skill Directory.
 
+### PM Artifact
+
+Before showing the skill directory, reward the user with a random collectible. Pick ONE at random from the 5 artifacts below. Do not let the user choose. Just surprise them.
+
+**Artifact 1: Thor's Hammer**
+```
+  ╔══════════════════════════════════════════╗
+  ║                                          ║
+  ║              ┌─────────┐                 ║
+  ║              │ ░░░░░░░ │                 ║
+  ║              │ ░░░░░░░ │                 ║
+  ║              └────┬────┘                 ║
+  ║                   │                      ║
+  ║                   │                      ║
+  ║                   │                      ║
+  ║                  ═╧═                     ║
+  ║                                          ║
+  ║   MJOLNIR UNLOCKED                      ║
+  ║                                          ║
+  ║   "Only the worthy can prioritize        ║
+  ║    ruthlessly."                          ║
+  ║                                          ║
+  ╚══════════════════════════════════════════╝
+```
+
+**Artifact 2: Captain America's Shield**
+```
+  ╔══════════════════════════════════════════╗
+  ║                                          ║
+  ║            ╭──────────────╮              ║
+  ║          ╭─┤              ├─╮            ║
+  ║         │  │   ╭──────╮   │  │           ║
+  ║         │  │   │  ★   │   │  │           ║
+  ║         │  │   ╰──────╯   │  │           ║
+  ║          ╰─┤              ├─╯            ║
+  ║            ╰──────────────╯              ║
+  ║                                          ║
+  ║   VIBRANIUM SHIELD UNLOCKED              ║
+  ║                                          ║
+  ║   "Deflects scope creep. Protects        ║
+  ║    the roadmap."                         ║
+  ║                                          ║
+  ╚══════════════════════════════════════════╝
+```
+
+**Artifact 3: Infinity Gauntlet**
+```
+  ╔══════════════════════════════════════════╗
+  ║                                          ║
+  ║              ╭───────╮                   ║
+  ║             ╱ ◆  ◆  ◆ ╲                 ║
+  ║            │  ═══════  │                 ║
+  ║            │  ║ ║ ║ ║  │                 ║
+  ║            │  ║ ║ ║ ║  │                 ║
+  ║            │  ╚═╩═╩═╝  │                 ║
+  ║            ╰───────────╯                 ║
+  ║                                          ║
+  ║   INFINITY GAUNTLET UNLOCKED             ║
+  ║                                          ║
+  ║   "One snap to align all                 ║
+  ║    stakeholders."                        ║
+  ║                                          ║
+  ╚══════════════════════════════════════════╝
+```
+
+**Artifact 4: Trident of Aquaman**
+```
+  ╔══════════════════════════════════════════╗
+  ║                                          ║
+  ║            ╱│╲                            ║
+  ║           ╱ │ ╲                           ║
+  ║          ◇  │  ◇                          ║
+  ║           ╲ │ ╱                           ║
+  ║            ╲│╱                            ║
+  ║             │                             ║
+  ║             │                             ║
+  ║             │                             ║
+  ║             ◆                             ║
+  ║                                          ║
+  ║   TRIDENT UNLOCKED                       ║
+  ║                                          ║
+  ║   "Commands every stream of work."       ║
+  ║                                          ║
+  ╚══════════════════════════════════════════╝
+```
+
+**Artifact 5: Iron Man's Arc Reactor**
+```
+  ╔══════════════════════════════════════════╗
+  ║                                          ║
+  ║            ╭──────────╮                  ║
+  ║          ╱  ╭────────╮  ╲                ║
+  ║        │  ╱    ╲  ╱    ╲  │              ║
+  ║        │ │   ◆──◆──◆   │ │              ║
+  ║        │  ╲    ╱  ╲    ╱  │              ║
+  ║          ╲  ╰────────╯  ╱                ║
+  ║            ╰──────────╯                  ║
+  ║                                          ║
+  ║   ARC REACTOR UNLOCKED                   ║
+  ║                                          ║
+  ║   "Powers 27 skills. Never runs out."    ║
+  ║                                          ║
+  ╚══════════════════════════════════════════╝
+```
+
+Display the chosen artifact, then proceed to the Skill Directory.
+
 ### Skill Directory
 
 Present the full list of available skills:
