@@ -24,7 +24,7 @@ claude plugin install pm-os
 /pm-setup
 ```
 
-PM-OS asks about your company (drop a URL and it researches everything), your product, team, tools, and goals. It creates a `knowledge/` directory with populated context files that every skill reads.
+PM-OS asks about your company (drop a URL and it researches everything), your product, team, tools, and goals. It creates a `knowledge/` directory with populated context files that every skill reads. Complete the setup to unlock a surprise collectible.
 
 ### Start Using It
 
