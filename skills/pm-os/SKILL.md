@@ -1,6 +1,6 @@
 ---
 name: pm-os
-description: "Product Manager's Operating System: gateway skill that routes requests to 26 PM workflow skills and manages the knowledge system."
+description: "Product Manager's Operating System: gateway skill that routes requests to 27 PM workflow skills and manages the knowledge system."
 ---
 
 # PM-OS: Product Manager's Operating System
@@ -79,6 +79,11 @@ When the user asks what PM-OS can do, or seems unsure which skill to use, presen
 | **Metrics Check** | Review product metrics, flag anomalies, suggest investigations. |
 | **Experiment Review** | Analyze A/B test or experiment results with recommendations. |
 
+### Present
+| Skill | What it does |
+|-------|-------------|
+| **Create Slide Deck** | Build HTML slide decks with your brand colors. Keyboard nav, print-ready. |
+
 ### Cadence
 | Skill | What it does |
 |-------|-------------|
@@ -90,6 +95,7 @@ These slash commands map to the most common workflows:
 
 - `/pm-setup` : Run the onboarding wizard
 - `/prd` : Jump straight to PRD writing
+- `/slides` : Create an HTML slide deck
 - `/launch` : Start a launch plan
 - `/brief` : Get your PM briefing
 
@@ -100,6 +106,7 @@ When the user makes a request, determine which skill best matches:
 1. **Exact match**: User names a skill or uses a slash command. Route directly.
 2. **Intent match**: User describes what they want. Map to the closest skill. Examples:
    - "I need to write a spec" -> Write PRD or Refine Spec
+   - "Make me a presentation" -> Create Slide Deck
    - "What are our competitors doing?" -> Competitive Intel
    - "Should we build X?" -> Opportunity Assessment
    - "How are we tracking on goals?" -> Metrics Check or Dashboard
@@ -139,6 +146,7 @@ knowledge/
   personas/          # User personas
   research/          # User research artifacts
   feasibility/       # Technical feasibility assessments
+  decks/             # HTML slide decks
 ```
 
 Every skill reads from and writes to this directory. This means skills build on each other: a competitive intel report feeds into strategy, which feeds into OKRs, which feed into prioritization.

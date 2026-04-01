@@ -1,6 +1,6 @@
 # PM-OS: The Product Manager's Operating System
 
-A Claude Code plugin that turns your terminal into a complete product management operating system. 26 AI-powered skills covering every PM workflow: from writing PRDs to running retros, from competitive research to quarterly planning.
+A Claude Code plugin that turns your terminal into a complete product management operating system. 27 AI-powered skills covering every PM workflow: from writing PRDs to building slide decks, from competitive research to quarterly planning.
 
 **No empty templates. No manual setup.** PM-OS asks questions, does the research, and generates ready-to-use documents. You review and refine.
 
@@ -24,6 +24,7 @@ PM-OS asks about your company (drop a URL and it researches everything), your pr
 
 ```
 /prd notification-system        # Write a PRD
+/slides quarterly-review        # Build an HTML slide deck
 /brief                          # Morning briefing
 /launch checkout-redesign       # Launch checklist
 ```
@@ -32,7 +33,7 @@ Or just describe what you need in plain language. PM-OS routes to the right skil
 
 ## What's Inside
 
-### 26 Skills Across 10 Categories
+### 27 Skills Across 11 Categories
 
 | Category | Skills | What They Do |
 |----------|--------|-------------|
@@ -44,6 +45,7 @@ Or just describe what you need in plain language. PM-OS routes to the right skil
 | **Plan** | prioritize, roadmap-builder, sprint-scope | RICE/ICE scoring, roadmaps, sprint planning |
 | **Deliver** | launch-plan, retro-facilitator | Launch checklists, retrospectives and post-mortems |
 | **Communicate** | status-update, decision-record, meeting-prep | Stakeholder updates, decision logging, meeting prep |
+| **Present** | create-slide-deck | HTML slide decks with your brand colors, keyboard nav, print-ready |
 | **Measure** | metrics-check, experiment-review | KPI reviews, A/B test analysis |
 | **Cadence** | pm-briefing | Morning briefing with prioritized action items |
 
@@ -53,6 +55,7 @@ Or just describe what you need in plain language. PM-OS routes to the right skil
 |---------|-------------|
 | `/pm-setup` | Interactive onboarding wizard |
 | `/prd <feature>` | Generate a PRD |
+| `/slides <topic>` | Build an HTML slide deck |
 | `/launch <feature>` | Create a launch checklist |
 | `/brief` | Morning briefing |
 
@@ -123,7 +126,7 @@ Skills detect installed integrations automatically. Install the Slack plugin and
 ### What Makes It an "OS"
 
 - **The knowledge directory is the filesystem.** Persistent, version-controlled, human-readable context that every skill shares.
-- **The gateway skill is the kernel.** It routes every request to the right skill. You don't memorize 26 commands.
+- **The gateway skill is the kernel.** It routes every request to the right skill. You don't memorize 27 commands.
 - **Progressive enhancement.** Install a Linear plugin and planning skills auto-upgrade. The OS gets more powerful as you add peripherals.
 
 ## Skill Highlights
@@ -139,6 +142,10 @@ If you run PM-OS inside a code repository, skills like `tech-feasibility` and `w
 ### Decision Memory
 
 `decision-record` captures every decision with alternatives, rationale, and "revisit if" conditions. After months of use, anyone can ask "why did we choose X?" and get the real answer with full context.
+
+### Brand-Matched Slide Decks
+
+`/slides quarterly-review` builds a full HTML presentation with your company's colors, keyboard navigation, and print-ready layouts. It pulls data from your knowledge directory: metrics for product reviews, battlecards for competitive overviews, OKRs for strategy presentations. No PowerPoint needed.
 
 ### PRD-to-Launch Pipeline
 
