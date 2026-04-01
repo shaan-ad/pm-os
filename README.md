@@ -9,7 +9,8 @@ A Claude Code plugin that turns your terminal into a complete product management
 ### Install
 
 ```bash
-claude plugin install shaan-ad/pm-os
+claude plugin marketplace add shaan-ad/pm-os
+claude plugin install pm-os
 ```
 
 ### Set Up Your Product
