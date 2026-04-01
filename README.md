@@ -182,6 +182,15 @@ Before installing any Claude Code plugin, you should review what it does. PM-OS 
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add skills, improve existing ones, or suggest new workflows.
 
+## Uninstall
+
+```bash
+claude plugin uninstall pm-os
+claude plugin marketplace remove pm-os-marketplace
+```
+
+Your `knowledge/` directory is not deleted. All your product context, PRDs, and documents remain in your project.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
