@@ -35,28 +35,51 @@ Then ask:
 
 ## Step 3: Extract Visual Identity
 
+Brand guidelines are critical. Follow them tightly. Never deviate from user-provided colors, fonts, or logo usage rules.
+
 Ask the user:
 
-> What are your brand colors? You can:
-> - **Drop your website URL** and I'll extract them automatically
-> - **Tell me directly** (e.g., "primary: #1a73e8, secondary: #34a853")
-> - **Skip** and I'll use a clean default palette
+> Do you have brand guidelines or a style guide?
+> - **Yes, here's the doc/link**: I'll follow it exactly
+> - **No, but here's my website URL**: I'll extract colors, fonts, and style from it
+> - **No guidelines**: Can you share a screenshot of your website (or any website whose color theme you like)? I'll match that style.
+> - **Just tell me the colors**: Provide hex codes directly
 
 ### If the user provides a URL:
 
-Use `WebFetch` to load the site. Extract brand colors by looking for:
+Use `WebFetch` to load the site. Extract brand identity by looking for:
 - CSS custom properties (e.g., `--primary-color`, `--brand-color`)
 - `<meta name="theme-color">` tag
-- Dominant colors in the header, buttons, and links
+- Dominant colors in the header, navigation, buttons, and links
+- Font families used in headings and body text
 - Open Graph or favicon accent colors
+- Overall style: is it dark/light, minimal/bold, corporate/playful?
 
-If `WebFetch` is unavailable, ask the user to paste their colors directly.
+Present what you found and ask the user to confirm before proceeding.
+
+### If the user provides a screenshot:
+
+Use the Read tool to view the screenshot. Extract:
+- Primary, secondary, and accent colors (estimate hex codes from what you see)
+- Font style (serif, sans-serif, monospace, rounded, geometric)
+- Overall mood (dark mode, light, corporate, startup, editorial)
+
+Present your color extraction and ask the user to confirm or adjust.
+
+### If the user provides brand guidelines:
+
+Read the document thoroughly. Extract and follow:
+- Exact color hex codes (primary, secondary, accent, backgrounds)
+- Typography rules (font families, weights, sizes, hierarchy)
+- Logo usage rules (minimum size, clear space, placement)
+- Any do's and don'ts
+
+If `WebFetch` is unavailable for URLs, ask the user to take a screenshot of their website and share it, or paste their colors directly.
 
 Then ask:
-- **Font preference**: "Do you have a preferred font? I'll default to Inter (clean, modern, highly readable) if not."
-- **Logo**: "Do you have a logo URL I can include in the slide header? (optional)"
+- **Logo**: "Do you have a logo URL or file I can include in the slide header? (optional)"
 
-### Default palette (if no brand provided):
+### Default palette (only if user explicitly skips all options above):
 
 ```
 Primary:    #1a1a2e (deep navy)
@@ -171,7 +194,7 @@ Create a **single, self-contained HTML file** with no external dependencies. Eve
     width: 100vw;
     height: 100vh;
     display: none;
-    padding: 60px 80px;
+    padding: 30px 40px;
     position: absolute;
     top: 0;
     left: 0;
@@ -294,13 +317,14 @@ Choose from these slide layouts based on content. Mix them throughout the deck t
 - Background uses secondary brand color
 
 **Content Slide (text + bullets):**
-- Slide title at top
-- 3-5 bullet points, each with a bolded lead-in phrase
+- Slide title at top with a relevant inline SVG icon next to it
+- 3-5 bullet points, each with a small icon prefix and a bolded lead-in phrase
 - Keep bullets concise: one line each, two lines maximum
+- Example icon usage: checkmark for completed items, arrow-right for action items, lightbulb for insights, alert-triangle for risks
 
 **Metric Callout:**
-- 1-3 large numbers displayed prominently
-- Each number has a label below it and an optional trend indicator (arrow up/down, percentage change)
+- 1-3 large numbers displayed prominently (5-6rem font size, fill the slide)
+- Each number has an icon above it (trending-up, users, dollar-sign, etc.), a label below, and an optional trend indicator
 - Use CSS grid for layout:
 ```html
 <div class="metrics-grid">
@@ -331,8 +355,8 @@ Choose from these slide layouts based on content. Mix them throughout the deck t
 
 **Timeline Slide:**
 - Horizontal or vertical timeline using CSS flexbox
-- Milestones as labeled nodes along the timeline
-- Highlight current position
+- Milestones as labeled nodes along the timeline, each with a small contextual icon (flag for start, check-circle for done, circle for in-progress)
+- Highlight current position with accent color
 
 **Quote Slide:**
 - Large customer or user quote in italics
@@ -349,8 +373,8 @@ Choose from these slide layouts based on content. Mix them throughout the deck t
 - Use `max-width: 80%; max-height: 70vh;` to keep proportions
 
 **Closing Slide:**
-- Summary of key takeaways (3 bullets maximum)
-- Clear next steps or call to action
+- Summary of key takeaways (3 bullets maximum), each with an icon
+- Clear next steps or call to action with arrow-right icons
 - Contact info or follow-up details if relevant
 
 ### Speaker Notes
@@ -375,13 +399,14 @@ Follow these rules for every deck:
 
 1. **One idea per slide.** If you need two points, use two slides.
 2. **Maximum 6 bullet points per slide.** Fewer is better.
-3. **Large font sizes.** Titles: 2.5-3rem. Body text: 1.3-1.5rem. Metrics: 4-5rem.
-4. **Generous whitespace.** Padding of 60px+ on all sides. Let content breathe.
-5. **Consistent alignment.** Left-align body text. Center titles and metrics.
-6. **Brand-consistent colors.** Use primary for headers, accent for highlights, muted tones for secondary text.
-7. **No decorative clutter.** No gradients, shadows, or animations beyond the slide transition. Clean and flat.
-8. **High contrast.** Text must be readable. Dark text on light backgrounds, or light text on dark backgrounds. Never mid-gray text on white.
-9. **Visual hierarchy.** Every slide should have a clear focal point that draws the eye first.
+3. **Big font sizes.** Titles: 3-3.5rem. Body text: 1.5-1.8rem. Metrics: 5-6rem. Labels: 1.1-1.3rem. If text looks small, make it bigger. Err on the side of too large.
+4. **Minimal whitespace.** Padding of 40px on sides, 30px top/bottom. Fill the slide with content. No large empty gaps between elements. Margins between sections: 16-24px max. The slide should feel full and intentional, not sparse.
+5. **Use icons everywhere.** Add inline SVG icons next to section headers, bullet points, metric labels, and navigation elements. Use simple, single-color line icons that match the brand accent color. Keep icons subtle (16-24px for inline, 32-48px for feature callouts). Good icon sources: inline SVG from Lucide/Feather icon sets. Never use emoji as icons.
+6. **Consistent alignment.** Left-align body text. Center titles and metrics.
+7. **Brand-consistent colors.** Follow the user's brand guidelines exactly. Use primary for headers, accent for highlights, muted tones for secondary text. If the user provided a style guide, do not deviate from it.
+8. **No decorative clutter.** No gratuitous gradients, shadows, or animations beyond the slide transition. Clean and flat. Icons are functional, not decorative.
+9. **High contrast.** Text must be readable. Dark text on light backgrounds, or light text on dark backgrounds. Never mid-gray text on white.
+10. **Visual hierarchy.** Every slide should have a clear focal point that draws the eye first. The icon + heading combination should anchor each slide.
 
 ## Step 7: Save and Deliver
 
