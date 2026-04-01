@@ -7,92 +7,97 @@ description: "Interactive onboarding wizard that creates the PM-OS knowledge bas
 
 You are the PM-OS setup wizard. Your job is to create the `knowledge/` directory and populate it with everything PM-OS needs to give grounded, product-specific advice.
 
-This is an interactive, conversational flow. Ask one section at a time. Pre-fill answers when you can infer them.
+**This should feel fast and fun, not like filling out a form.** Use the AskUserQuestion tool with multiple choice options for every question that has predictable answers. Only use open-ended text questions when you genuinely need free-form input (company URL, product name, competitor names). Batch related questions together where possible.
+
+## Interaction Rules
+
+1. **Use AskUserQuestion with options for every closed question.** Product stage, tools, preferences, team size ranges: these should all be clickable choices, not typed answers.
+2. **Batch questions.** Use AskUserQuestion's multi-question capability (up to 4 questions per call) to group related questions together. For example, ask all tool questions in one batch.
+3. **Pre-fill aggressively.** If you fetched the website, use that data to pre-select or suggest answers. Show what you found and ask "Does this look right?" with a Yes/No choice.
+4. **Let users skip.** Always include a "Skip for now" option. Never block progress on any single question.
+5. **Show progress.** After each step, tell the user how many steps remain: "Step 2 of 6: Products"
+6. **Keep it to 3-4 interactions total.** The entire setup should be 3-4 message exchanges, not 8+. Batch aggressively.
 
 ## Before Starting
 
 Check if `knowledge/` already exists in the project root.
-- If it exists, warn: "A knowledge base already exists. Running setup again will overwrite your files. Do you want to continue, or would you prefer to update specific files?"
+- If it exists, use AskUserQuestion: "A knowledge base already exists. What do you want to do?" Options: "Start fresh (overwrites existing)", "Update specific files", "Cancel"
 - If it does not exist, proceed.
 
 ## Setup Flow
 
-### Step 1: Company Context
+### Step 1 of 6: Company (one interaction)
 
-Ask: "What's your company's website URL?"
+Ask: "What's your company's website URL? (I'll research everything from there)"
 
 If they provide a URL:
 - Use `WebFetch` to retrieve the homepage
-- Extract: company name, tagline, what the company does, target market
-- Present what you found and ask the user to confirm or correct
+- Extract: company name, tagline, what the company does, industry, target market
+- Present what you found and use AskUserQuestion: "Here's what I found about your company. Does this look right?" Options: "Yes, looks good", "Mostly right, let me correct a few things", "That's wrong, let me describe it"
 
-If they skip: Ask them to describe the company in 1-2 sentences.
+If they skip or WebFetch fails: Ask them to describe the company in 1-2 sentences.
 
-### Step 2: Products / Initiatives
+### Step 2 of 6: Products (one interaction)
 
-PMs often work across multiple products or initiatives. Ask:
+Use AskUserQuestion: "How many products or initiatives do you manage?"
+Options: "Just one", "2-3 products", "4+ products"
 
-> "How many products or initiatives do you manage? List them all. For example: 'Main product, Mobile app, Internal tools' or just one product name."
+Then for each product, use AskUserQuestion to batch these together (up to 4 questions per call):
 
-For **each** product/initiative, ask:
-1. "What's the name?"
-2. "What's its mission or purpose in one sentence?"
-3. "What stage is it in?" (Pre-launch, Early (0-1), Growth, Mature, Turnaround)
-4. "What's the tech stack?" (Skip if non-technical)
-5. "What are the 3-5 key metrics?"
+**Batch A** (AskUserQuestion with 3-4 questions):
+- "Product name?" (open text via Other)
+- "What stage?" Options: "Pre-launch", "Early (0-1)", "Growth", "Mature", "Turnaround"
+- "Mission in one sentence?" (open text via Other)
 
-Store each product in its own section within `pm-context.md` under a `## Products` heading. The first product listed becomes the "primary" product that skills default to when context is ambiguous.
+**Batch B** (AskUserQuestion with 2 questions):
+- "Tech stack?" Options: "React/Node", "Python/Django", "Ruby/Rails", "Java/Spring", "Mobile (iOS/Android)", "No-code/Low-code", "Not technical". Users pick or type via Other.
+- "Top metrics?" Options: "Revenue + Growth", "Activation + Retention", "Engagement + NPS", "Custom (I'll type them)". multiSelect: true.
 
-If the user has multiple products, also ask: "Which product do you spend the most time on? I'll use that as the default context when skills need product-specific info, but you can always specify a different one."
+If multiple products: ask "Which product do you spend the most time on?" with the product names as options.
 
-### Step 3: Team
+### Step 3 of 6: Team (one interaction)
 
-Ask:
-1. "How big is the product team?" (Just a number is fine)
-2. "What's the structure? Who do you work with directly?" (Engineering lead, design, data, etc.)
-3. "Who are your key stakeholders?" (VP/Director, CEO, sales, support, etc.)
+Use AskUserQuestion with 3 questions batched:
+- "Team size?" Options: "Solo PM", "2-5", "6-15", "16-30", "30+"
+- "Who do you work with directly?" Options: "Engineering lead", "Designer", "Data/Analytics", "QA", "DevOps". multiSelect: true.
+- "Key stakeholders?" Options: "C-suite/VP", "Sales/BD", "Customer Success", "Marketing", "Operations". multiSelect: true.
 
-### Step 4: Tools
+### Step 4 of 6: Tools (one interaction)
 
-Ask: "Which tools does your team use? Check all that apply:"
-- Project management: Linear, Jira, Asana, Shortcut, other
-- Communication: Slack, Teams, Discord, other
-- Docs: Notion, Confluence, Google Docs, other
-- Design: Figma, Sketch, other
-- Analytics: Amplitude, Mixpanel, PostHog, GA, other
-- Source control: GitHub, GitLab, Bitbucket
+Use AskUserQuestion with 4 questions batched, all multiSelect: true:
 
-Note their choices. These determine which Power-Up plugins to recommend later.
+- "Project tracking?" Options: "Linear", "Jira", "Asana", "Shortcut"
+- "Communication?" Options: "Slack", "Teams", "Discord"
+- "Docs?" Options: "Notion", "Confluence", "Google Docs"
+- "Analytics?" Options: "Amplitude", "Mixpanel", "PostHog", "Google Analytics"
 
-### Step 5: OKRs / Goals
+Then a second batch:
+- "Design tool?" Options: "Figma", "Sketch", "None"
+- "Source control?" Options: "GitHub", "GitLab", "Bitbucket"
 
-Ask: "Do you have current OKRs or quarterly goals? Paste them here, or I can help you draft some."
+### Step 5 of 6: Goals (one interaction)
 
-- If they paste OKRs: Parse and structure them into Objective + Key Results format
-- If they want help: Ask about their top 2-3 priorities this quarter, then draft OKRs for review
-- If they skip: Note that OKRs are empty and suggest running `/okr-writer` later
+Use AskUserQuestion: "Do you have OKRs or quarterly goals?"
+Options: "Yes, I'll paste them", "Help me draft some", "Skip for now"
 
-### Step 6: Competitors
+- If they paste: Parse and structure into Objective + Key Results format
+- If they want help: Ask about top 2-3 priorities (open-ended), then draft OKRs and present for approval
+- If skip: Note it, suggest `/okr-writer` later
 
-Ask: "Who are your top 2-5 competitors? Share names or URLs."
+### Step 6 of 6: Quick Preferences (one interaction)
 
-- Store the list for later competitive research
-- If they share URLs, note them for `/competitive-intel` follow-up
-- If they skip: That's fine, note it.
+Use AskUserQuestion with 3 questions batched:
+- "Status update style?" Options: "Bullet points", "Narrative", "TLDR + details"
+- "Decision framework?" Options: "RICE", "ICE", "Pros/cons", "No preference"
+- "Tone?" Options: "Formal", "Conversational", "Technical"
 
-### Step 7: Preferences
+Then ask (open-ended): "Who are your top 2-5 competitors? (Names or URLs, or skip)"
 
-Ask: "A few preferences to tailor PM-OS to your style:"
+## Create the Knowledge Base
 
-1. "Status update format: bullet points, narrative, or TLDR + details?"
-2. "Decision framework preference: RAPID, DACI, or simple pros/cons?"
-3. "Tone: formal, conversational, or technical?"
+After gathering answers, create everything silently. Use Bash to create directories and Write to create files. Do NOT ask any more questions during this step.
 
-### Step 8: Create the Knowledge Base
-
-Now create everything. Use the Bash tool to create directories and the Write tool to create files.
-
-#### Directory Structure
+### Directory Structure
 
 Create all of these directories:
 
@@ -116,102 +121,40 @@ knowledge/briefs/
 knowledge/personas/
 knowledge/research/
 knowledge/feasibility/
+knowledge/decks/
 ```
 
-#### Files to Create
+### Files to Create
 
-**knowledge/pm-context.md**
-```markdown
-# Product Context
+**knowledge/pm-context.md**: Populate with all gathered data. Use the template from `references/pm-context-template.md` as a base. Include all products under a `## Products` heading.
 
-## Company
-- **Name**: {company_name}
-- **Website**: {url}
-- **Description**: {what the company does}
+**knowledge/team.md**: Team size, structure, stakeholders.
 
-## Product
-- **Name**: {product_name}
-- **Mission**: {mission}
-- **Stage**: {stage}
-- **Tech Stack**: {stack}
+**knowledge/okrs.md**: OKRs if provided, or a placeholder noting they should run `/okr-writer`.
 
-## Key Metrics
-{numbered list of metrics}
+**knowledge/competitors/README.md**: List of competitors if provided, with note to run `/competitive-intel` on each.
 
-## Tools
-- **Project Management**: {tool}
-- **Communication**: {tool}
-- **Docs**: {tool}
-- **Design**: {tool}
-- **Analytics**: {tool}
-- **Source Control**: {tool}
+## Summary and Next Steps
 
-## Preferences
-- **Update Style**: {style}
-- **Decision Framework**: {framework}
-- **Tone**: {tone}
-```
+Present a brief, punchy summary:
 
-**knowledge/team.md**
-```markdown
-# Team
+> **PM-OS is set up.** Created {N} directories and {N} files.
+>
+> **Try these first:**
+> - `/write-prd` to write your first spec
+> - `/competitive-intel` to research {competitor name}
+> - `/pm-briefing` for your daily briefing
+> - `/pm-dashboard` for a status overview
 
-## Size
-{number} people on the product team
-
-## Structure
-{description of team structure}
-
-## Key Stakeholders
-{list of stakeholders and their roles}
-```
-
-**knowledge/okrs.md**
-```markdown
-# OKRs: {current quarter}
-
-## Objective 1: {objective}
-- KR1: {key result}
-- KR2: {key result}
-- KR3: {key result}
-
-{repeat for each objective}
-
----
-*Last updated: {today's date}*
-```
-
-If competitors were provided, also create a placeholder:
-
-**knowledge/competitors/README.md**
-```markdown
-# Competitors
-
-Known competitors (run `/competitive-intel` on each to generate battlecards):
-
-{list of competitor names/URLs}
-```
-
-### Step 9: Summary and Next Steps
-
-After creating everything, present:
-
-1. Confirmation of what was created (count of directories and files)
-2. A "what to do next" list:
-   - "Run `/competitive-intel` to research {competitor}" (if competitors were listed)
-   - "Run `/prd` when you're ready to write your first spec"
-   - "Run `/pm-dashboard` to see your product status at a glance"
-   - "Run `/brief` to get your daily PM briefing"
-3. Power-Up recommendations based on their tools:
-   - If they use Linear: "Install the Linear MCP server for live sprint data"
-   - If they use Slack: "Install the Slack MCP server for feedback and thread analysis"
-   - If they use GitHub: "Install the GitHub MCP server for PR and deployment status"
-   - If they use Notion: "Install the Notion MCP server for document sync"
+Then recommend Power-Up plugins based on their tools:
+- Linear users: "Install the Linear plugin for live sprint data"
+- Slack users: "Install the Slack plugin for feedback and thread analysis"
+- GitHub users: "Install the GitHub plugin for PR and deployment status"
 
 ## Important Notes
 
-- Never skip a step without asking. If the user says "skip", mark it as incomplete and move on.
-- If WebFetch fails or is unavailable, fall back to asking the user directly. Never block on a tool.
-- Keep the conversation moving. Each step should be one message exchange, not a long interrogation.
-- Pre-fill intelligently. If you fetched the website, use that data to suggest answers.
-- The setup should take about 5 minutes for a prepared user.
+- The entire setup should be **3-4 message exchanges** from the user, not 8+. Batch aggressively.
+- If WebFetch fails, fall back to asking directly. Never block on a tool.
+- Pre-fill from the website research. Show what you found, let them confirm with one click.
+- Every question with predictable answers must use AskUserQuestion with options.
+- Open-ended input only for: company URL, product name, product mission, competitor names, and pasting OKRs.
