@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "pm-os-marketplace",
+  "description": "The Product Manager's Operating System for Claude Code",
+  "owner": {
+    "name": "Shaan Agara",
+    "url": "https://github.com/shaan-ad"
+  },
+  "plugins": [
+    {
+      "name": "pm-os",
+      "description": "27 AI-powered skills for every PM workflow: PRDs, prioritization, competitive intel, stakeholder updates, launch planning, slide decks, and more.",
+      "source": ".",
+      "category": "productivity",
+      "homepage": "https://github.com/shaan-ad/pm-os"
+    }
+  ]
+}
