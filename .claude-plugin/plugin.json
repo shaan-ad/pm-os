@@ -1,0 +1,28 @@
+{
+  "name": "pm-os",
+  "description": "The Product Manager's Operating System. AI-powered skills for every PM workflow: PRDs, prioritization, competitive intel, stakeholder updates, launch planning, and more.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Shaan Agara",
+    "url": "https://github.com/shaan-ad"
+  },
+  "homepage": "https://github.com/shaan-ad/pm-os",
+  "repository": "https://github.com/shaan-ad/pm-os",
+  "license": "MIT",
+  "keywords": [
+    "product-management",
+    "pm",
+    "prd",
+    "roadmap",
+    "prioritization",
+    "stakeholder-updates",
+    "competitive-intel",
+    "launch-planning",
+    "decision-log",
+    "product-ops",
+    "okr",
+    "sprint-planning",
+    "user-research",
+    "personas"
+  ]
+}
